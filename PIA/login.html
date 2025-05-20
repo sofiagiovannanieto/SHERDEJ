@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión | SHERDEJ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #ffffff;
+      border: 2px solid #E63946;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .login-container h2 {
+      text-align: center;
+      color: #E63946;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #E63946;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .login-container button:hover {
+      background-color: #B03C3C;
+    }
+    .login-container .link {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #0077cc;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .login-container .link:hover {
+      text-decoration: underline;
+    }
+    .error {
+      color: red;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+
+  <div class="login-container">
+    <h2>Admin Enchilositos y Picositos</h2>
+    <input type="text" id="usuario" placeholder="Usuario" required>
+    <input type="password" id="contrasena" placeholder="Contraseña" required>
+    <button onclick="iniciarSesion()">Iniciar Sesión</button>
+    <a class="link" href="#" onclick="recuperarContrasena()">Olvidé mi contraseña</a>
+    <p class="error" id="errorMensaje">Usuario o contraseña incorrectos</p>
+  </div>
+
+  <script>
+    function iniciarSesion() {
+      const usuario = document.getElementById("usuario").value;
+      const contrasena = document.getElementById("contrasena").value;
+      const error = document.getElementById("errorMensaje");
+
+      // Credenciales estáticas de ejemplo
+      const userValido = "admin";
+      const passValido = "sh3rd3j";
+
+      if (usuario === userValido && contrasena === passValido) {
+        window.location.href = "admin.html";
+      } else {
+        error.style.display = "block";
+      }
+    }
+
+    function recuperarContrasena() {
+      const correo = prompt("Ingresa tu correo para recuperar tu contraseña:");
+      if (correo) {
+        alert("Se ha enviado un enlace de recuperación a " + correo + " (función simulada)");
+        // En una app real, aquí deberías conectar con un backend o servicio como Firebase
+      }
+    }
+  </script>
+
+</body>
+</html>

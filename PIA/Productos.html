@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHERDEJ | Productos</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <img src="img/LOGO.jpg" alt="SHERDEJ" style="height: 50px;">
+    </div>
+    <nav>
+      <a href="index.html">Menú Principal</a>
+      <a href="productos.html">Productos</a>
+      <a href="charolas.html">Charolas y Mixes</a>
+      <a href="pedidos.html">Pedidos</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="login.html">Iniciar Sesión</a>
+    </nav>
+  </header>
+
+  <section class="productos">
+
+  <div class="producto">
+    <div class="carousel" data-id="enchilositos">
+      <img src="img/enchilositos.jpg" alt="Enchilositos">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Enchilositos</h3>
+  </div>
+
+  <div class="producto">
+    <div class="carousel" data-id="picositos">
+      <img src="img/picositos.jpg" alt="Picositos">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Picositos</h3>
+  </div>
+
+  <div class="producto">
+    <div class="carousel" data-id="candys">
+      <img src="img/candys.jpg" alt="Candys">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Candys</h3>
+  </div>
+
+  <div class="producto">
+    <div class="carousel" data-id="kilo">
+      <img src="img/kilo.jpg" alt="Kilo">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Kilo</h3>
+  </div>
+
+</section>
+
+<script>
+  const carousels = document.querySelectorAll('.carousel');
+
+  const imageSets = {
+    enchilositos: [
+      'img/enchilositos.jpg',
+      'img/enchilositos2.jpg',
+      'img/enchilositos3.jpg'
+    ],
+    picositos: [
+      'img/picositos.jpg',
+      'img/picositos2.jpg',
+      'img/picositos3.jpg'
+    ],
+    candys: [
+      'img/candys.jpg',
+      'img/candys2.png',
+      'img/candys3.jpg'
+    ],
+    kilo: [
+      'img/kilo.jpg',
+      'img/kilo2.jpg',
+      'img/kilo3.jpg'
+    ]
+  };
+
+  carousels.forEach((carousel) => {
+    const id = carousel.dataset.id;
+    const img = carousel.querySelector('img');
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+
+    if (!imageSets[id]) return;
+
+    const images = imageSets[id];
+    let index = 0;
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + images.length) % images.length;
+      img.src = images[index];
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % images.length;
+      img.src = images[index];
+    });
+  });
+</script>
+
+
+</body>
+</html>

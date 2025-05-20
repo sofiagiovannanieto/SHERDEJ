@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHERDEJ | Charolas y Mixes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="img/LOGO.jpg" alt="SHERDEJ" style="height: 50px;">
+    </div>
+    <nav>
+      <a href="index.html">Menú Principal</a>
+      <a href="productos.html">Productos</a>
+      <a href="charolas.html">Charolas y Mixes</a>
+      <a href="pedidos.html">Pedidos</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="login.html">Iniciar Sesión</a>
+    </nav>
+  </header>
+
+  <section class="charolas">
+  <div class="productos">
+
+    <div class="producto">
+      <div class="carousel" data-id="charola">
+        <img src="img/logoc.jpg" alt="charola">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <p>Presentación elegante para reuniones. Ideal para fiestas, eventos empresariales y presentes. Cada uno se puede personalizar de acuerdo a la ocasión.</p>
+    </div>
+
+    <div class="producto">
+      <div class="carousel" data-id="mix">
+        <img src="img/logomix.jpg" alt="mix">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <p>Ideal para presentes en epocas festivas como: San Valentin, Navidad, Pascua y mas!. Cada uno se puede personalizar de acuerdo a la ocasión.</p>
+    </div>
+
+  </div>
+</section>
+
+  <script>
+  const carousels = document.querySelectorAll('.carousel');
+
+  const imageSets = {
+    charola: [
+      'img/logoc.jpg',
+      'img/charola_fiesta.jpg',
+      'img/charola_empresarial.jpg'
+    ],
+    mix: [
+      'img/logomix.jpg',
+      'img/mix1.jpg',
+      'img/mix2.jpg',
+      'img/mix3.jpg'
+    ]
+  };
+
+  carousels.forEach((carousel) => {
+    const id = carousel.dataset.id;
+    const img = carousel.querySelector('img');
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+
+    if (!imageSets[id]) return;
+
+    const images = imageSets[id];
+    let index = 0;
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + images.length) % images.length;
+      img.src = images[index];
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % images.length;
+      img.src = images[index];
+    });
+  });
+</script>
+
+</body>
+</html>
